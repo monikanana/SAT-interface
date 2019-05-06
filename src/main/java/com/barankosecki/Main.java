@@ -7,14 +7,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.sat4j.reader.DimacsReader;
 import org.sat4j.tools.DimacsOutputSolver;
 
 import java.io.File;
-
 
 public class Main extends Application {
 
@@ -30,19 +28,18 @@ public class Main extends Application {
     @FXML
     private Button runBtn;
 
-    private String fileInput;
-    private String saveOutput;
-    private boolean satelite;
-
     @FXML
     private Button outputFileBtn;
 
     @FXML
     private Button sateliteBtn;
 
-
     private Stage stage;
     private DimacsReader dimacsReader;
+
+    private String fileInput;
+    private String saveOutput;
+    private boolean satelite;
 
     @FXML
     public void loadCnfFile() {
@@ -57,12 +54,13 @@ public class Main extends Application {
 
             try {
                 dimacsReader.parseInstance(file.getAbsolutePath());
-                //runBtn.setTextFill(Color.GREEN);
                 runBtn.setDisable(false);
+                currentCnfFileBtn.getStyleClass().removeAll("btn", "btn-green", "btn-red");
+                currentCnfFileBtn.getStyleClass().add("btn-green");
             } catch (Exception e) {
-                //runBtn.setTextFill(Color.RED);
-                e.printStackTrace();
                 runBtn.setDisable(true);
+                currentCnfFileBtn.getStyleClass().removeAll("btn", "btn-green", "btn-red");
+                currentCnfFileBtn.getStyleClass().add("btn-red");
             }
         }
     }
@@ -118,7 +116,16 @@ public class Main extends Application {
     @FXML
     public void toggleSatelite() {
         satelite = !satelite;
-        System.out.println("Satelite is" + (this.satelite ? "on" : "off"));
+        if(satelite) {
+            sateliteBtn.getStyleClass().remove("btn-red");
+            sateliteBtn.getStyleClass().add("btn-green");
+        } else {
+            sateliteBtn.getStyleClass().remove("btn-green");
+            sateliteBtn.getStyleClass().add("btn-red");
+        }
+
+        System.out.println("Satelite is " + (this.satelite ? "on" : "off"));
+        System.out.println(satelite);
     }
 
     @FXML
@@ -129,16 +136,16 @@ public class Main extends Application {
         saveOutput = "";
         dimacsReader = new DimacsReader(new DimacsOutputSolver());
         runBtn.setDisable(true);
-
+        outputFileBtn.setDisable(true);
     }
 
     @Override
     public void start(final Stage primaryStage) throws Exception {
 
+        /* config */
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("layout.fxml"));
         root.getStylesheets().add(Main.class.getClassLoader().getResource("main.css").toExternalForm());
 
-        /* config */
         stage = primaryStage;
         stage.setResizable(false); // preventing window resizing
         stage.setTitle("SAT Solver Interface");

@@ -13,34 +13,43 @@
     -fx-border-color: #06619e;
 }
 
+.btn-green {
+    -fx-background-color: #3c3f41;
+    -fx-text-fill: #548e3f;
+    -fx-border-width: 3px;
+}
+
+.btn-red {
+    -fx-background-color: #3c3f41;
+    -fx-text-fill: #d1675a;
+    -fx-border-width: 3px;
+}
+
 .author {
     -fx-fill: #b4b4b4;
 }
 
-.coordinateSystem { /* plaszczyzna kartezjanska */
-    -fx-background-color: #3c3f41;
-}
-
-.info {
-    -fx-fill: #b4b4b4;
-}
-
-.legend {
+.result {
     -fx-background-color: #3c3f41;
     -fx-text-fill: #b4b4b4;
+    -fx-control-inner-background: #3c3f41;
+}
+
+.combo-box .list-cell {
+    -fx-text-fill: #b4b4b4;
+    -fx-alignment: center;
+}
+
+.combo-box .list-view {
     -fx-border-width: 3px;
+    -fx-border-color: #06619e;
 }
 
-.legend-title {
-    -fx-fill: #b4b4b4;
-}
-
-.settings {
+.combo-box .list-view .list-cell {
     -fx-background-color: #3c3f41;
     -fx-text-fill: #b4b4b4;
-    -fx-border-width: 3px;
 }
 
-.settings-title {
-    -fx-fill: #b4b4b4;
+.combo-box .list-view .list-cell:hover {
+    -fx-background-color: #06619e;
 }
