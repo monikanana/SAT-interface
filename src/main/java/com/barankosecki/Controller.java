@@ -19,12 +19,19 @@ public class Controller {
                 fileInputPath = "./src/main/resources/solvers/outputSatElite";
             }
 
-            if (name.equals("lingeling")) {
-                processBuilder = new ProcessBuilder(filePath, fileInputPath, "-o", fileOutputPath);
-            } else if (name.equals("zchaff") || name.equals("cadical") || name.equals("abcdsat_p") || name.equals("glucose-syrup")) {
-                processBuilder = new ProcessBuilder(filePath, fileInputPath);
-            } else {
-                processBuilder = new ProcessBuilder(filePath, fileInputPath, fileOutputPath);
+            switch (name) {
+                case "lingeling":
+                    processBuilder = new ProcessBuilder(filePath, fileInputPath, "-o", fileOutputPath);
+                    break;
+                case "zchaff":
+                case "cadical":
+                case "abcdsat_p":
+                case "glucose-syrup":
+                    processBuilder = new ProcessBuilder(filePath, fileInputPath);
+                    break;
+                default:
+                    processBuilder = new ProcessBuilder(filePath, fileInputPath, fileOutputPath);
+                    break;
             }
 
 
