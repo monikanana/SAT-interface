@@ -51,7 +51,7 @@ public class Main extends Application {
         Button chooseFileButton = new Button("Wyszukaj");
         chooseFileButton.setOnAction(event -> {
                     FileChooser fileChooser = new FileChooser();
-                    fileChooser.setInitialDirectory(new File("./src/main/java/solvers"));
+                    fileChooser.setInitialDirectory(new File("./src/main/resources/problems"));
                     File file = fileChooser.showOpenDialog(primaryStage);
 
                     if (file != null) {
