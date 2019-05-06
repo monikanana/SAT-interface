@@ -3,6 +3,8 @@ package com.barankosecki;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
@@ -32,6 +34,8 @@ public class Main extends Application {
     public void start(final Stage primaryStage) throws Exception {
 
         final DimacsReader dimacsReader = new DimacsReader(new DimacsOutputSolver());
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("layout.fxml"));
+        root.getStylesheets().add(Main.class.getClassLoader().getResource("main.css").toExternalForm());
         primaryStage.setTitle("SAT Solver Interfejs");
         Pane pane = new Pane();
         saveOutput = "";
@@ -51,7 +55,7 @@ public class Main extends Application {
         Button chooseFileButton = new Button("Wyszukaj");
         chooseFileButton.setOnAction(event -> {
                     FileChooser fileChooser = new FileChooser();
-                    fileChooser.setInitialDirectory(new File("./src/main/java/solvers"));
+                    fileChooser.setInitialDirectory(new File("./src/main/java/com/solvers"));
                     File file = fileChooser.showOpenDialog(primaryStage);
 
                     if (file != null) {

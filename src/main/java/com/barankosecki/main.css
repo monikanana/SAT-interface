@@ -1,0 +1,46 @@
+.Main {
+    -fx-background-color: #282829;
+    -fx-text-fill: #b4b4b4;
+}
+
+.btn {
+    -fx-background-color: #3c3f41;
+    -fx-text-fill: #b4b4b4;
+    -fx-border-width: 3px;
+}
+
+.btn:pressed {
+    -fx-border-color: #06619e;
+}
+
+.author {
+    -fx-fill: #b4b4b4;
+}
+
+.coordinateSystem { /* plaszczyzna kartezjanska */
+    -fx-background-color: #3c3f41;
+}
+
+.info {
+    -fx-fill: #b4b4b4;
+}
+
+.legend {
+    -fx-background-color: #3c3f41;
+    -fx-text-fill: #b4b4b4;
+    -fx-border-width: 3px;
+}
+
+.legend-title {
+    -fx-fill: #b4b4b4;
+}
+
+.settings {
+    -fx-background-color: #3c3f41;
+    -fx-text-fill: #b4b4b4;
+    -fx-border-width: 3px;
+}
+
+.settings-title {
+    -fx-fill: #b4b4b4;
+}
