@@ -9,14 +9,14 @@ public class Controller {
 
     public static String runSATSolver(String name, String fileInputPath, String fileOutputPath, boolean satelite) {
 
-        String filePath = "./src/main/java/com/solvers/" + name;
+        String filePath = "./src/main/resources/solvers/" + name;
         StringBuilder sb = new StringBuilder();
 
         ProcessBuilder processBuilder;
         try {
             if (satelite) {
                 runSatELite(fileInputPath);
-                fileInputPath = "./src/main/java/out/solvers/outputSatElite";
+                fileInputPath = "./src/main/resources/solvers/outputSatElite";
             }
 
             if (name.equals("lingeling")) {
@@ -47,7 +47,7 @@ public class Controller {
 
     private static void runSatELite(String fileInputPath) {
         try {
-            ProcessBuilder processBuilder = new ProcessBuilder("./src/main/java/com/solvers/SatELite_v1.0_linux", fileInputPath, "./../solvers/outputSatElite");
+            ProcessBuilder processBuilder = new ProcessBuilder("./src/main/resources/solvers/SatELite_v1.0_linux", fileInputPath, "solvers/outputSatElite");
             Process process = processBuilder.start();
             InputStream inputStream = process.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream), 1);
