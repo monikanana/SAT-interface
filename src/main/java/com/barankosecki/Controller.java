@@ -34,7 +34,6 @@ public class Controller {
                     break;
             }
 
-
             Process process = processBuilder.start();
             InputStream inputStream = process.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream), 1);
@@ -54,7 +53,7 @@ public class Controller {
 
     private static void runSatELite(String fileInputPath) {
         try {
-            ProcessBuilder processBuilder = new ProcessBuilder("./src/main/resources/solvers/SatELite_v1.0_linux", fileInputPath, "solvers/outputSatElite");
+            ProcessBuilder processBuilder = new ProcessBuilder("./src/main/resources/solvers/SatELite_v1.0_linux", fileInputPath, "./src/main/resources/solvers/outputSatElite");
             Process process = processBuilder.start();
             InputStream inputStream = process.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream), 1);
@@ -66,6 +65,4 @@ public class Controller {
             e.printStackTrace();
         }
     }
-
-
 }
