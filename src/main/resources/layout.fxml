@@ -57,6 +57,13 @@
                         <String fx:value="Riss" />
                         <String fx:value="Syrup" />
                         <String fx:value="Zchaff" />
+                        <String fx:value="Maple_CM" />
+                        <String fx:value="Maple_CM_Dist" />
+                        <String fx:value="Maple_CM_ordUIP" />
+                        <String fx:value="Maple_CM_ordUIP+" />
+                        <String fx:value="MapleLCMDistChronoBT" />
+                        <String fx:value="Maple_LCM_Scavel_fix2" />
+                        <String fx:value="Maple_LCM_Scavel_200_fix2" />
                      </FXCollections>
                   </items>
 
