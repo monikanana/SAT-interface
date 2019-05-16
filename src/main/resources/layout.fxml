@@ -1,97 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.collections.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
-
 <?import javafx.collections.FXCollections?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<?import java.lang.*?>
+<GridPane alignment="center" maxHeight="600.0" maxWidth="1000.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0"
+          prefWidth="1000.0" styleClass="Main" stylesheets="@./main.css" xmlns="http://javafx.com/javafx/8"
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.barankosecki.Main">
+    <columnConstraints>
+        <ColumnConstraints/>
+        <ColumnConstraints/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints/>
+        <RowConstraints/>
+        <RowConstraints/>
+    </rowConstraints>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+    <children>
+        <VBox prefHeight="560.0" prefWidth="660.0" GridPane.columnIndex="1">
+            <GridPane.margin>
+                <Insets left="20.0"/>
+            </GridPane.margin>
+            <children>
+                <Pane maxHeight="480.0" maxWidth="660.0" minHeight="480.0" minWidth="660.0" prefHeight="480.0"
+                      prefWidth="660.0">
+                    <children>
+                        <TextArea fx:id="outputField" maxHeight="480.0" maxWidth="660.0" minHeight="480.0"
+                                  minWidth="660.0" prefHeight="480.0" prefWidth="660.0" styleClass="result"/>
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="20.0"/>
+                    </VBox.margin>
+                </Pane>
+                <Pane prefHeight="200.0" prefWidth="200.0">
+                </Pane>
+            </children>
+        </VBox>
+        <VBox prefHeight="560.0" prefWidth="280.0">
+            <children>
+                <Button fx:id="currentCnfFileBtn" maxHeight="80.0" maxWidth="280.0" minHeight="80.0" minWidth="280.0"
+                        mnemonicParsing="false" onAction="#loadCnfFile" prefHeight="80.0" prefWidth="280.0"
+                        styleClass="btn" text="Load CNF file" textAlignment="CENTER">
+                    <VBox.margin>
+                        <Insets bottom="20.0"/>
+                    </VBox.margin>
+                </Button>
+                <ComboBox fx:id="chooseSolver" layoutX="10.0" layoutY="10.0" maxHeight="80.0" maxWidth="280.0"
+                          minHeight="80.0" minWidth="280.0" onAction="#chooseSolver" prefHeight="80.0" prefWidth="280.0"
+                          styleClass="btn, combo-box" value="AbcdSAT">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="AbcdSAT"/>
+                            <String fx:value="Cadical"/>
+                            <String fx:value="Glucose"/>
+                            <String fx:value="Lingeling"/>
+                            <String fx:value="Minisat"/>
+                            <String fx:value="Riss"/>
+                            <String fx:value="Syrup"/>
+                            <String fx:value="Zchaff"/>
+                            <String fx:value="Maple_CM"/>
+                            <String fx:value="Maple_CM_Dist"/>
+                            <String fx:value="Maple_CM_ordUIP"/>
+                            <String fx:value="Maple_CM_ordUIP+"/>
+                            <String fx:value="MapleLCMDistChronoBT"/>
+                            <String fx:value="Maple_LCM_Scavel_fix2"/>
+                            <String fx:value="Maple_LCM_Scavel_200_fix2"/>
+                        </FXCollections>
+                    </items>
 
-<GridPane alignment="center" maxHeight="600.0" maxWidth="1000.0" minHeight="600.0" minWidth="1000.0" prefHeight="600.0" prefWidth="1000.0" styleClass="Main" stylesheets="@./main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.barankosecki.Main">
-   <columnConstraints>
-      <ColumnConstraints />
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-   </rowConstraints>
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
-   <children>
-      <VBox prefHeight="560.0" prefWidth="660.0" GridPane.columnIndex="1">
-         <GridPane.margin>
-            <Insets left="20.0" />
-         </GridPane.margin>
-         <children>
-            <Pane maxHeight="480.0" maxWidth="660.0" minHeight="480.0" minWidth="660.0" prefHeight="480.0" prefWidth="660.0">
-               <children>
-                  <TextArea fx:id="outputField" maxHeight="480.0" maxWidth="660.0" minHeight="480.0" minWidth="660.0" prefHeight="480.0" prefWidth="660.0" styleClass="result" />
-               </children>
-               <VBox.margin>
-                  <Insets bottom="20.0" />
-               </VBox.margin></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0">
-            </Pane>
-         </children>
-      </VBox>
-      <VBox prefHeight="560.0" prefWidth="280.0">
-         <children>
-            <Button fx:id="currentCnfFileBtn" maxHeight="80.0" maxWidth="280.0" minHeight="80.0" minWidth="280.0" mnemonicParsing="false" onAction="#loadCnfFile" prefHeight="80.0" prefWidth="280.0" styleClass="btn" text="Load CNF file" textAlignment="CENTER">
-               <VBox.margin>
-                  <Insets bottom="20.0" />
-               </VBox.margin>
-            </Button>
-            <ComboBox fx:id="chooseSolver" layoutX="10.0" layoutY="10.0" maxHeight="80.0" maxWidth="280.0" minHeight="80.0" minWidth="280.0" onAction="#chooseSolver" prefHeight="80.0" prefWidth="280.0" styleClass="btn, combo-box" value="AbcdSAT">
-                  <items>
-                     <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="AbcdSAT" />
-                        <String fx:value="Cadical" />
-                        <String fx:value="Glucose" />
-                        <String fx:value="Lingeling" />
-                        <String fx:value="Minisat" />
-                        <String fx:value="Riss" />
-                        <String fx:value="Syrup" />
-                        <String fx:value="Zchaff" />
-                        <String fx:value="Maple_CM" />
-                        <String fx:value="Maple_CM_Dist" />
-                        <String fx:value="Maple_CM_ordUIP" />
-                        <String fx:value="Maple_CM_ordUIP+" />
-                        <String fx:value="MapleLCMDistChronoBT" />
-                        <String fx:value="Maple_LCM_Scavel_fix2" />
-                        <String fx:value="Maple_LCM_Scavel_200_fix2" />
-                     </FXCollections>
-                  </items>
-
-               <VBox.margin>
-                  <Insets bottom="20.0" />
-               </VBox.margin>
-            </ComboBox>
-            <Button fx:id="outputFileBtn" layoutX="10.0" layoutY="130.0" maxHeight="80.0" maxWidth="280.0" minHeight="80.0" minWidth="280.0" mnemonicParsing="false" onAction="#setOutputFile" prefHeight="80.0" prefWidth="280.0" styleClass="btn" text="Output file" textAlignment="CENTER">
-               <VBox.margin>
-                  <Insets bottom="20.0" />
-               </VBox.margin>
-            </Button>
-            <Button layoutX="10.0" layoutY="10.0" maxHeight="80.0" maxWidth="280.0" minHeight="80.0" minWidth="280.0" mnemonicParsing="false" onAction="#toggleSatelite" prefHeight="80.0" prefWidth="280.0" styleClass="btn-red" text="Use Satelite" fx:id="sateliteBtn" textAlignment="CENTER">
-               <VBox.margin>
-                  <Insets bottom="20.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="runBtn" layoutX="10.0" layoutY="310.0" maxHeight="80.0" maxWidth="280.0" minHeight="80.0" minWidth="280.0" mnemonicParsing="false" onAction="#runSolver" prefHeight="80.0" prefWidth="280.0" styleClass="btn" text="Run" textAlignment="CENTER">
-               <VBox.margin>
-                  <Insets bottom="20.0" />
-               </VBox.margin>
-            </Button>
-            <Pane maxHeight="60.0" maxWidth="280.0" minHeight="60.0" minWidth="280.0" prefHeight="60.0" prefWidth="280.0">
-               <children>
-                  <Text layoutX="30.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="author" text="Monika Baran &amp; Krzysztof Kosecki" />
-               </children>
-            </Pane>
-         </children>
-      </VBox>
-   </children>
+                    <VBox.margin>
+                        <Insets bottom="20.0"/>
+                    </VBox.margin>
+                </ComboBox>
+                <Button fx:id="outputFileBtn" layoutX="10.0" layoutY="130.0" maxHeight="80.0" maxWidth="280.0"
+                        minHeight="80.0" minWidth="280.0" mnemonicParsing="false" onAction="#setOutputFile"
+                        prefHeight="80.0" prefWidth="280.0" styleClass="btn" text="Output file" textAlignment="CENTER">
+                    <VBox.margin>
+                        <Insets bottom="20.0"/>
+                    </VBox.margin>
+                </Button>
+                <Button layoutX="10.0" layoutY="10.0" maxHeight="80.0" maxWidth="280.0" minHeight="80.0"
+                        minWidth="280.0" mnemonicParsing="false" onAction="#toggleSatelite" prefHeight="80.0"
+                        prefWidth="280.0" styleClass="btn-red" text="Use Satelite" fx:id="sateliteBtn"
+                        textAlignment="CENTER">
+                    <VBox.margin>
+                        <Insets bottom="20.0"/>
+                    </VBox.margin>
+                </Button>
+                <Button fx:id="runBtn" layoutX="10.0" layoutY="310.0" maxHeight="80.0" maxWidth="280.0" minHeight="80.0"
+                        minWidth="280.0" mnemonicParsing="false" onAction="#runSolver" prefHeight="80.0"
+                        prefWidth="280.0" styleClass="btn" text="Run" textAlignment="CENTER">
+                    <VBox.margin>
+                        <Insets bottom="20.0"/>
+                    </VBox.margin>
+                </Button>
+                <Pane maxHeight="60.0" maxWidth="280.0" minHeight="60.0" minWidth="280.0" prefHeight="60.0"
+                      prefWidth="280.0">
+                    <children>
+                        <Text layoutX="30.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="author"
+                              text="Monika Baran &amp; Krzysztof Kosecki"/>
+                    </children>
+                </Pane>
+            </children>
+        </VBox>
+    </children>
 </GridPane>
