@@ -29,13 +29,27 @@ public class SolverOutputParser {
 
         StringBuilder result = new StringBuilder();
 
+        System.out.println("-----------------------------");
+        System.out.println("LINIA: " + results);
         if(!results.isEmpty()) {
             for(String v : results) {
-                v = v.substring(1,v.length()-1);
+                System.out.println(v);
+
+                if(v.length() == 3) {
+                    continue;
+                }
+
+                if(v.charAt(v.length()-1) == '0') {
+                    v = v.substring(2, v.length() - 2);
+                } else {
+                    v = v.substring(2);
+                }
                 result.append(v);
             }
         }
 
+        System.out.println("result: " + result);
+        System.out.println("-----------------------------");
         return result.toString();
     }
 }

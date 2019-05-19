@@ -102,8 +102,6 @@ public class Main extends Application {
         String inputPath;
         String output = "";
 
-
-
         if (fromFile) {
             inputPath = this.fileInput;
         } else {
@@ -114,7 +112,7 @@ public class Main extends Application {
                 FileWriter fw = new FileWriter(inputPath);
                 fw.write(parsedProblem);
                 fw.close();
-            } catch(Exception e) {
+            } catch (Exception e) {
                 System.out.println(e);
             }
         }
@@ -139,10 +137,13 @@ public class Main extends Application {
                 break;
         }
 
-        output += SolverOutputParser.getResult(output);
-        outputField.setText(output);
+        if (!fromFile) {
+            String solverSolution = SolverOutputParser.getResult(output);
 
-        if(!fromFile) {
+            if (!solverSolution.isEmpty()) {
+                output += CnfParser.numericLiteralsToCharacters(solverSolution);
+            }
+
             try {
                 FileWriter fw = new FileWriter(inputPath);
                 fw.write("");
@@ -150,7 +151,9 @@ public class Main extends Application {
             } catch (Exception e) {
                 System.out.println(e);
             }
+
         }
+        outputField.setText(output);
     }
 
     @FXML
