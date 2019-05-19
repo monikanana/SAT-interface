@@ -35,7 +35,7 @@
             <Pane maxHeight="480.0" maxWidth="660.0" minHeight="480.0" minWidth="660.0" prefHeight="480.0" prefWidth="660.0">
                <children>
                   <TextArea fx:id="problemInput" maxHeight="80.0" maxWidth="520.0" minHeight="80.0" minWidth="520.0" prefHeight="80.0" prefWidth="520.0" promptText="Type problem here" styleClass="text-box" />
-                  <Button fx:id="runInputBtn" layoutX="540.0" maxHeight="80.0" maxWidth="120.0" minHeight="80.0" minWidth="120.0" mnemonicParsing="false" onAction="#loadCnfFile" prefHeight="80.0" prefWidth="120.0" styleClass="btn" text="Solve input" textAlignment="CENTER" />
+                  <Button fx:id="runInputBtn" layoutX="540.0" maxHeight="80.0" maxWidth="120.0" minHeight="80.0" minWidth="120.0" mnemonicParsing="false" onAction="#runSolverFromInput"  prefHeight="80.0" prefWidth="120.0" styleClass="btn" text="Solve input" textAlignment="CENTER"  />
                   <TextArea fx:id="outputField" promptText="Console output will be shown here" layoutY="100.0" maxHeight="380.0" maxWidth="660.0" minHeight="380.0" minWidth="660.0" prefHeight="380.0" prefWidth="660.0" styleClass="text-box" />
                </children>
                <VBox.margin>

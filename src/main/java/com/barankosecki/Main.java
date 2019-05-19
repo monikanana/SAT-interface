@@ -13,6 +13,7 @@ import org.sat4j.reader.DimacsReader;
 import org.sat4j.tools.DimacsOutputSolver;
 
 import java.io.File;
+import java.io.FileWriter;
 
 public class Main extends Application {
 
@@ -103,7 +104,17 @@ public class Main extends Application {
         if (fromFile) {
             input = this.fileInput;
         } else {
-            input = ""; // TODO: Servis Moniki
+            // TODO: Servis Moniki, który zapisze do pliku zparsowany string
+            input = "./src/main/resources/problems/userInput.cnf";
+
+            try {
+                FileWriter fw = new FileWriter(input);
+                fw.write(problemInput.getText());
+                fw.close();
+            } catch(Exception e) {
+                System.out.println(e);
+            }
+
         }
 
         switch (solver) {
