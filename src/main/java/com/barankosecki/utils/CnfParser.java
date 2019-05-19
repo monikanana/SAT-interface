@@ -5,6 +5,8 @@ import java.util.Map;
 
 public class CnfParser {
 
+    private static Map<String, Integer> map;
+
     public static String parseToCnf(String input) {
 
         String[] clauses = input.split("\n");
@@ -12,7 +14,7 @@ public class CnfParser {
         StringBuilder result = new StringBuilder();
         result.append("p cnf  ").append(clauses.length).append("\n");
 
-        Map<String, Integer> map = new HashMap<>();
+        map = new HashMap<>();
 
         for (String clause : clauses) {
             for (String literal : clause.split(" ")) {
@@ -30,6 +32,23 @@ public class CnfParser {
             result.append("0\n");
         }
         result.insert(6, map.size());
+
+        return result.toString();
+    }
+
+    public static String numericLiteralsToCharacters(String input) {
+
+        StringBuilder result = new StringBuilder();
+        for (String literal : input.split(" ")) {
+            result.append(literal.charAt(0) == '-' ? "-" : "");
+            result.append(map.entrySet()
+                    .stream()
+                    .filter(e -> e.getValue().equals(Math.abs(Integer.parseInt(literal))))
+                    .findFirst()
+                    .get()
+                    .getKey());
+            result.append(" ");
+        }
 
         return result.toString();
     }
