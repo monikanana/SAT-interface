@@ -40,9 +40,6 @@ public class Main extends Application {
     @FXML
     private Button sateliteBtn;
 
-    @FXML
-    private Button runInputBtn;
-
     private Stage stage;
     private DimacsReader dimacsReader;
 
@@ -139,6 +136,14 @@ public class Main extends Application {
                 break;
         }
         outputField.setText(output);
+
+        try {
+            FileWriter fw = new FileWriter(input);
+            fw.write("");
+            fw.close();
+        } catch(Exception e) {
+            System.out.println(e);
+        }
     }
 
     @FXML
