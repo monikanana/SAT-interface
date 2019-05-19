@@ -33,6 +33,9 @@ public class CnfParser {
         }
         result.insert(6, map.size());
 
+        System.out.print("Problem: ");
+        System.out.println(result);
+
         return result.toString();
     }
 
