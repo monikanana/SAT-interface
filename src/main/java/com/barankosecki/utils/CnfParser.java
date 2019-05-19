@@ -33,8 +33,4 @@ public class CnfParser {
 
         return result.toString();
     }
-
-    public static void main(String[] args) {
-
-    }
 }
