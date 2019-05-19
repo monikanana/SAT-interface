@@ -27,7 +27,7 @@ public class CnfParser {
                     result.append(sign).append(map.get(variable)).append(" ");
                 }
             }
-            result.append("\n");
+            result.append("0\n");
         }
         result.insert(6, map.size());
 
