@@ -1,5 +1,7 @@
 package com.barankosecki;
 
+import com.barankosecki.utils.CnfParser;
+import com.barankosecki.utils.SolverOutputParser;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -97,23 +99,24 @@ public class Main extends Application {
 
     private void runSolver(boolean fromFile) {
         String solver = this.chooseSolver.getValue();
-        String input;
+        String inputPath;
         String output = "";
 
+
+
         if (fromFile) {
-            input = this.fileInput;
+            inputPath = this.fileInput;
         } else {
-            // TODO: Servis Moniki, który zapisze do pliku zparsowany string
-            input = "./src/main/resources/problems/userInput.cnf";
+            String parsedProblem = CnfParser.parseToCnf(problemInput.getText());
+            inputPath = "./src/main/resources/problems/userInput.cnf";
 
             try {
-                FileWriter fw = new FileWriter(input);
-                fw.write(problemInput.getText());
+                FileWriter fw = new FileWriter(inputPath);
+                fw.write(parsedProblem);
                 fw.close();
             } catch(Exception e) {
                 System.out.println(e);
             }
-
         }
 
         switch (solver) {
@@ -132,17 +135,21 @@ public class Main extends Application {
             case "MapleLCMDistChronoBT":
             case "Maple_LCM_Scavel_fix2":
             case "Maple_LCM_Scavel_200_fix2":
-                output = Controller.runSATSolver(solver, input, saveOutput, satelite);
+                output = Controller.runSATSolver(solver, inputPath, saveOutput, satelite);
                 break;
         }
+
+        output += SolverOutputParser.getResult(output);
         outputField.setText(output);
 
-        try {
-            FileWriter fw = new FileWriter(input);
-            fw.write("");
-            fw.close();
-        } catch(Exception e) {
-            System.out.println(e);
+        if(!fromFile) {
+            try {
+                FileWriter fw = new FileWriter(inputPath);
+                fw.write("");
+                fw.close();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
         }
     }
 

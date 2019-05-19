@@ -20,13 +20,13 @@ public class Controller {
             }
 
             switch (name) {
-                case "lingeling":
+                case "Lingeling":
                     processBuilder = new ProcessBuilder(filePath, fileInputPath, "-o", fileOutputPath);
                     break;
-                case "zchaff":
-                case "cadical":
-                case "abcdsat_p":
-                case "glucose-syrup":
+                case "Zchaff":
+                case "Cadical":
+                case "AbcdSAT":
+                case "Glucose":
                     processBuilder = new ProcessBuilder(filePath, fileInputPath);
                     break;
                 default:
