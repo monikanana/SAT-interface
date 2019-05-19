@@ -29,10 +29,11 @@
     -fx-fill: #b4b4b4;
 }
 
-.result {
+.text-box {
     -fx-background-color: #3c3f41;
     -fx-text-fill: #b4b4b4;
     -fx-control-inner-background: #3c3f41;
+    -fx-prompt-text-fill: #b4b4b4;
 }
 
 .combo-box .list-cell {
