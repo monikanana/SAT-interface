@@ -17,6 +17,9 @@ import java.io.File;
 public class Main extends Application {
 
     @FXML
+    private TextArea problemInput;
+
+    @FXML
     private TextArea outputField;
 
     @FXML
@@ -33,6 +36,9 @@ public class Main extends Application {
 
     @FXML
     private Button sateliteBtn;
+
+    @FXML
+    private Button runInputBtn;
 
     private Stage stage;
     private DimacsReader dimacsReader;
@@ -78,58 +84,47 @@ public class Main extends Application {
     }
 
     @FXML
-    public void runSolver() {
-        System.out.println("Run Solver");
+    public void runSolverFromInput() {
+        System.out.println("Run Solver from input");
+        runSolver(false);
+    }
+
+    @FXML
+    public void runSolverFromFile() {
+        System.out.println("Run Solver from file");
+        runSolver(true);
+    }
+
+    private void runSolver(boolean fromFile) {
         String solver = this.chooseSolver.getValue();
+        String input;
         String output = "";
-        switch (solver) {
-            case "AbcdSAT":
-                output = Controller.runSATSolver("abcdsat_p", fileInput, saveOutput, satelite);
-                break;
-            case "Cadical":
-                output = Controller.runSATSolver("cadical", fileInput, saveOutput, satelite);
-                break;
-            case "Glucose":
-                output = Controller.runSATSolver("glucose_static", fileInput, saveOutput, satelite);
-                break;
-            case "Lingeling":
-                output = Controller.runSATSolver("lingeling", fileInput, saveOutput, satelite);
-                break;
-            case "Minisat":
-                output = Controller.runSATSolver("minisat", fileInput, saveOutput, satelite);
-                break;
-            case "Riss":
-                output = Controller.runSATSolver("riss", fileInput, saveOutput, satelite);
-                break;
-            case "Syrup":
-                output = Controller.runSATSolver("glucose-syrup", fileInput, saveOutput, satelite);
-                break;
-            case "Zchaff":
-                output = Controller.runSATSolver("zchaff", fileInput, saveOutput, satelite);
-                break;
-            case "Maple_CM":
-                output = Controller.runSATSolver("Maple_CM", fileInput, saveOutput, satelite);
-                break;
-            case "Maple_CM_Dist":
-                output = Controller.runSATSolver("Maple_CM_Dist", fileInput, saveOutput, satelite);
-                break;
-            case "Maple_CM_ordUIP":
-                output = Controller.runSATSolver("Maple_CM_ordUIP", fileInput, saveOutput, satelite);
-                break;
-            case "Maple_CM_ordUIP+":
-                output = Controller.runSATSolver("Maple_CM_ordUIP+", fileInput, saveOutput, satelite);
-                break;
-            case "MapleLCMDistChronoBT":
-                output = Controller.runSATSolver("MapleLCMDistChronoBT", fileInput, saveOutput, satelite);
-                break;
-            case "Maple_LCM_Scavel_fix2":
-                output = Controller.runSATSolver("Maple_LCM_Scavel_fix2", fileInput, saveOutput, satelite);
-                break;
-            case "Maple_LCM_Scavel_200_fix2":
-                output = Controller.runSATSolver("Maple_LCM_Scavel_200_fix2", fileInput, saveOutput, satelite);
-                break;
+
+        if (fromFile) {
+            input = this.fileInput;
+        } else {
+            input = ""; // TODO: Servis Moniki
         }
 
+        switch (solver) {
+            case "AbcdSAT":
+            case "Cadical":
+            case "Glucose":
+            case "Lingeling":
+            case "Minisat":
+            case "Riss":
+            case "Syrup":
+            case "Zchaff":
+            case "Maple_CM":
+            case "Maple_CM_Dist":
+            case "Maple_CM_ordUIP":
+            case "Maple_CM_ordUIP+":
+            case "MapleLCMDistChronoBT":
+            case "Maple_LCM_Scavel_fix2":
+            case "Maple_LCM_Scavel_200_fix2":
+                output = Controller.runSATSolver(solver, input, saveOutput, satelite);
+                break;
+        }
         outputField.setText(output);
     }
 
