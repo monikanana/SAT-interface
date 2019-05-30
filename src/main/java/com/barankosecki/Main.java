@@ -141,7 +141,7 @@ public class Main extends Application {
             String solverSolution = SolverOutputParser.getResult(output);
 
             if (!solverSolution.isEmpty()) {
-                output += CnfParser.numericLiteralsToCharacters(solverSolution);
+                output += "Result from input: " + CnfParser.numericLiteralsToCharacters(solverSolution);
             }
 
             try {

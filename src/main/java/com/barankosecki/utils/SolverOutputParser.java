@@ -29,8 +29,6 @@ public class SolverOutputParser {
 
         StringBuilder result = new StringBuilder();
 
-        System.out.println("-----------------------------");
-        System.out.println("LINIA: " + results);
         if(!results.isEmpty()) {
             for(String v : results) {
                 System.out.println(v);
@@ -48,8 +46,6 @@ public class SolverOutputParser {
             }
         }
 
-        System.out.println("result: " + result);
-        System.out.println("-----------------------------");
         return result.toString();
     }
 }

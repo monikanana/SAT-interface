@@ -54,12 +54,12 @@
                      <FXCollections fx:factory="observableArrayList">
                         <String fx:value="AbcdSAT" />
                         <String fx:value="Cadical" />
-                        <String fx:value="Glucose" />
-                        <String fx:value="Lingeling" />
-                        <String fx:value="Minisat" />
+<!--                        <String fx:value="Glucose" />-->
+<!--                        <String fx:value="Lingeling" />  zakomentowane, bo nie mają v na początku lini, wiec nie zadzialaja z inputem-->
+<!--                        <String fx:value="Minisat" />-->
                         <String fx:value="Riss" />
-                        <String fx:value="Syrup" />
-                        <String fx:value="Zchaff" />
+<!--                        <String fx:value="Syrup" />-->
+<!--                        <String fx:value="Zchaff" />-->
                         <String fx:value="Maple_CM" />
                         <String fx:value="Maple_CM_Dist" />
                         <String fx:value="Maple_CM_ordUIP" />
