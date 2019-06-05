@@ -17,6 +17,8 @@ public class CnfParser {
         map = new HashMap<>();
 
         for (String clause : clauses) {
+
+            clause = clause.replaceAll("\\s+", " ");
             for (String literal : clause.split(" ")) {
 
                 String variable = literal.charAt(0) == '-' ? literal.substring(1) : literal;
@@ -33,7 +35,7 @@ public class CnfParser {
         }
         result.insert(6, map.size());
 
-        System.out.print("Problem: ");
+        System.out.println("Problem: ");
         System.out.println(result);
 
         return result.toString();
