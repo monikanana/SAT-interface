@@ -2,6 +2,8 @@
 JavaFX application that helps run SAT solvers (participants of 2017 and 2018 SAT Competition). GUI allows users to compare performance of exact solvers and to find solutions of considered SAT problems.
 
 ## Application interface:
+![app-view](https://github.com/monikanana/SAT-interface/blob/master/readme-images/app-view.png "App view")
+
 Po lewej stronie znajdują się cztery przyciski oraz rozwijana lista solverów służące kolejno do:
 1. Load CNF file - wczytanie pliku w formacie CNF do programu.
 2. Lista wyboru solvera
