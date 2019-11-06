@@ -4,20 +4,20 @@ JavaFX application that helps run SAT solvers (participants of 2017 and 2018 SAT
 ## Application interface:
 ![app-view](https://github.com/monikanana/SAT-interface/blob/master/readme-images/app-view.png "App view")
 
-Po lewej stronie znajdują się cztery przyciski oraz rozwijana lista solverów służące kolejno do:
-1. Load CNF file - wczytanie pliku w formacie CNF do programu.
-2. Lista wyboru solvera
-3. Output file - wybranie pliku, do którego zostanie zapisany rezultat. Przycisk jest dostępny tylko po wybraniu solvera umożliwiającego taką operację.
-4. Use Satelite - czerwony kolor oznacza, że problem nie będzie minimalizowany przed rozwiązaniem go przez solver, zielony - przeciwnie
-5. Solve from file - Uruchamia rozwiązywanie problemu z pliku CNF przez wybrany solver. Przycisk jest odblokowany, jeśli plik z problemem CNF pomyślnie przeszedł walidację.
+On the left there are four buttons and one combo list with solvers:
+1. Load CNF file
+2. Combo list with solvers
+3. Output file - select file where you would like to save the output. Button becomes active when you select solver with such option available.
+4. Use Satelite - if this button is green problem will be minimized before solving.
+5. Solve from file - This button is available if CNF file passed validation.
 
-Każdy plik z problemem wczytany przez użytkownika zostaje sprawdzony pod kątem poprawności za pomocą parsera DimacsReader, który jest częścią biblioteki sat4j. Format pliku `.cnf` ma określone reguły:
+Every file loaded by user is checked by DimacsReader from sat4j library. There are couple of rules for `.cnf` files:
 
-Linie zaczynające się od c traktowane są jako komentarz
-Pierwsza linia zaczynająca się literą p jest deklaracją formatu cnf oraz określa ilość zmiennych i klauzul.  Przykład takiej linii: `p cnf 20 534`
-Każda kolejna linia zawiera jedną klauzulę i jest zakończona zerem. Przykład takiej linii: `16 -30 95 0`. Klauzula odpowiadająca takiej linii to: `( x(16) OR ( NOT x(30) )  OR x(95))`.
-Zmienne oznaczone są liczbami naturalnymi.
-Negację zmiennej otrzymujemy za pomocą dopisania minusa przed liczbą.
+ * Lines starting with letter `c` are treated as comments
+ * Pierwsza linia zaczynająca się literą p jest deklaracją formatu cnf oraz określa ilość zmiennych i klauzul.  Przykład takiej linii: `p cnf 20 534`
+ * Każda kolejna linia zawiera jedną klauzulę i jest zakończona zerem. Przykład takiej linii: `16 -30 95 0`. Klauzula odpowiadająca takiej linii to: `( x(16) OR ( NOT x(30) )  OR x(95))`.
+ * Zmienne oznaczone są liczbami naturalnymi.
+ * Negację zmiennej otrzymujemy za pomocą dopisania minusa przed liczbą.
 
 Jeśli plik pomyślnie przejdzie walidację, jego nazwa zostaje pokolorowana na zielono, w przeciwnym razie - na czerwono. Po wybraniu solvera i uruchomieniu go rezultat pojawia się w oknie po prawej stronie. Wynikiem działania solvera są linie tekstu oznaczone przez jedną z trzech liter:
  * c - linia oznaczona tą literą pełni rolę dodatkowego opisu, komentarza. Przykładowo, informuje o czasie działania solvera czy użytej przez niego pamięci.
