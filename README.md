@@ -11,21 +11,24 @@ On the left there are four buttons and one combo list with solvers:
 4. Use Satelite - if this button is green problem will be minimized before solving.
 5. Solve from file - This button is available if CNF file passed validation.
 
+![solver-list](https://github.com/monikanana/SAT-interface/blob/master/readme-images/solver-list.png "Solver list")
+
 Every file loaded by user is checked by DimacsReader from sat4j library. There are couple of rules for `.cnf` files:
 
  * Lines starting with letter `c` are treated as comments
- * Pierwsza linia zaczynająca się literą p jest deklaracją formatu cnf oraz określa ilość zmiennych i klauzul.  Przykład takiej linii: `p cnf 20 534`
- * Każda kolejna linia zawiera jedną klauzulę i jest zakończona zerem. Przykład takiej linii: `16 -30 95 0`. Klauzula odpowiadająca takiej linii to: `( x(16) OR ( NOT x(30) )  OR x(95))`.
- * Zmienne oznaczone są liczbami naturalnymi.
- * Negację zmiennej otrzymujemy za pomocą dopisania minusa przed liczbą.
+ * First line (starting with letter `p` is a cnf format declaration and contains number of variables and clauses, e.g. `p cnf 20 534`
+ * Each following line contains one clause and has zero at the end, e.g. `16 -30 95 0`. Clause denoted by this line is `( x(16) OR ( NOT x(30) )  OR x(95))`
+ * Variables are natural numbers.
+ * `-` means `NOT`
 
-Jeśli plik pomyślnie przejdzie walidację, jego nazwa zostaje pokolorowana na zielono, w przeciwnym razie - na czerwono. Po wybraniu solvera i uruchomieniu go rezultat pojawia się w oknie po prawej stronie. Wynikiem działania solvera są linie tekstu oznaczone przez jedną z trzech liter:
- * c - linia oznaczona tą literą pełni rolę dodatkowego opisu, komentarza. Przykładowo, informuje o czasie działania solvera czy użytej przez niego pamięci.
- * s - linia oznaczona przez s informuje o spełnialności danego problemu
- * v - linia oznaczona w ten sposób zawiera rozwiązanie. Przykładowo, linia `1 -2 -3 4 5 6` oznacza, że jednym z rozwiązań problemów jest ustawienie pierwszej, czwartej, piątej oraz szóstej zmiennej na wartość logiczną true, natomiast zmienna o numerze drugim oraz trzecim powinna być ustawiona na false.
+![file-problem-satelite](https://github.com/monikanana/SAT-interface/blob/master/readme-images/file-problem-satelite.png "File Problem Satelite")
+If the file is valid its name is green, otherwise - it's red. After selecting and running solver the result is presented in the window on the right. The result is a block of text, each line starts with one of three letters:
+ * c - line with this letter contains some description, comment. For instance it informs about solver running time or memory used.
+ * s - line starting with s informs wheather problem can be solved (is satisfiable)
+ * v - line starting with v contains solution. For example `1 -2 -3 4 5 6` means, that one of the problem's solutions is to set first, fourth, fifth and sixth variable value to `true`, and the second and third should be `false`.
 
-SAT Solver Interface umożliwia również rozwiązywanie problemu wpisanego przez użytkownika w nieco bardziej przystępnej formie, niż za pomocą pliku w formacie `.cnf`. W prawym górnym rogu aplikacji znajduje się pole, w którym można wprowadzić swój własny problem. Nazwy zmiennych mogą być dowolne, znak “-” oznacza negację, spacja - alternatywę, znak nowej linii - koniunkcję. Po wybraniu solvera i wciśnięciu przycisku Solve Input otrzymamy wynik w oknie poniżej, podobnie jak w przypadku rozwiązywaniu problemu z pliku.
-
+![input-problem](https://github.com/monikanana/SAT-interface/blob/master/readme-images/input-problem.png "Problem from input")
+SAT Solver Interface allows user to input his problem in a more convinient way than loading `.cnf`file. In the top-right corner of UI there is a textfield where you can type your problem - variable names can be also letters or words separated by space (`OR`), between each line there is logical `AND`, `-` means `NOT`. After selecting solver and pressing Solve Input button user gets result in the window below - same way as for .cnf files.
 
  * SAT Competition website: http://www.satcompetition.org 
  * SAT Competition 2018: http://sat2018.forsyte.tuwien.ac.at/index.php?cat=result
